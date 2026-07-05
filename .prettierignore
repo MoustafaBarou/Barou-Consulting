@@ -1,0 +1,17 @@
+# Dependencies en build-output
+node_modules
+.next
+out
+build
+coverage
+
+# Lockfiles en gegenereerde bestanden
+package-lock.json
+next-env.d.ts
+
+# Statische assets
+public
+
+# Overig
+.vercel
+*.min.*
