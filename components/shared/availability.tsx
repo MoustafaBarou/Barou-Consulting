@@ -4,12 +4,12 @@ import { cn } from "@/lib/utils";
 /**
  * Beschikbaarheidsindicator: een klein statuslampje met een korte tekst.
  *
- * Dit is een signaal, geen knop. Het staat naast de primaire call-to-action
- * en mag die nooit verdringen. De tekst en de status komen uit lib/site.ts.
+ * Dit is een signaal, geen knop. Het staat in de hero bij de naam onder het
+ * portret, waar het hoort bij "dit ben ik en dit is mijn status". De tekst en
+ * de status komen uit lib/site.ts, zodat de status op één plek aanpasbaar is.
  *
- * Op smalle schermen blijft alleen het lampje over, zodat de header niet
- * overvol raakt. De volledige status blijft dan bereikbaar via de tooltip en
- * via een verborgen tekst voor schermlezers.
+ * De korte tekst staat er zichtbaar bij. De volledige status komt via de
+ * tooltip en via een verborgen tekst voor schermlezers.
  */
 const dotColor = {
   open: "bg-status-open",
@@ -38,10 +38,9 @@ function Availability({ className }: { className?: string }) {
         />
       </span>
 
-      {/* De volledige status staat er altijd voor schermlezers. De zichtbare
-          korte tekst verschijnt pas als er ruimte voor is. */}
+      {/* Schermlezers krijgen de volledige status, ziende bezoekers de korte. */}
       <span className="sr-only">{fullLabel}</span>
-      <span className="hidden text-sm whitespace-nowrap lg:inline" aria-hidden>
+      <span className="text-sm whitespace-nowrap" aria-hidden>
         {label}
       </span>
     </span>

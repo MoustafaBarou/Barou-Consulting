@@ -2,6 +2,7 @@ import { CheckCircle } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { Availability } from "@/components/shared/availability";
 import { PrimaryCta, SecondaryCta } from "@/components/shared/cta";
 import { LinkedInIcon } from "@/components/shared/icons";
 import { Portrait } from "@/components/shared/portrait";
@@ -70,6 +71,8 @@ function Hero() {
               <LinkedInIcon className="size-5" />
             </a>
           </div>
+
+          <Availability className="mt-3" />
         </div>
       </Container>
     </Section>

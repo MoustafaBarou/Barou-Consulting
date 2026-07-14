@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { Availability } from "@/components/shared/availability";
 import { Container } from "@/components/layout/container";
 import { PrimaryCta } from "@/components/shared/cta";
 import { Logo } from "@/components/shared/logo";
@@ -42,10 +41,7 @@ function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-4">
-          <Availability />
-          <PrimaryCta className="h-9 px-4" />
-        </div>
+        <PrimaryCta className="h-9 px-4" />
       </Container>
     </header>
   );
