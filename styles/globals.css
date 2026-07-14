@@ -24,6 +24,9 @@
   --color-brand-accent: var(--brand-accent);
   --color-paper: var(--paper);
   --color-ink: var(--ink);
+  --color-success: var(--success);
+  --color-eyebrow: var(--eyebrow);
+  --color-eyebrow-foreground: var(--eyebrow-foreground);
 
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -72,6 +75,20 @@
   --paper: #fbfaf8;
   --ink: #14181f;
 
+  /* Gedempt groen, uitsluitend als bevestigingssignaal (bijvoorbeeld een vinkje).
+     Nooit als decoratie en nooit als tweede accentkleur. */
+  --success: #107c41;
+
+  /* Bovenkant van de pagina-achtergrond. Loopt zacht af naar --background. */
+  --page-top: #ffffff;
+
+  /* Sectielabel (de pill boven een sectiekop). Beide uit de accent-familie.
+     De tekst gebruikt het diepere accent, want het heldere #0078D4 haalt op
+     dit lichte vlak maar 3,95:1 en dat is te weinig voor kleine tekst.
+     Deze combinatie haalt 5,38:1 en voldoet daarmee aan WCAG AA. */
+  --eyebrow: #e9f1fa;
+  --eyebrow-foreground: var(--brand-accent-strong);
+
   --radius: 0.625rem;
 
   /* Semantische tokens (light) */
@@ -111,6 +128,14 @@
 }
 
 .dark {
+  --success: #4cc38a;
+  --page-top: #0d1424;
+
+  /* In dark blijft de pill in dezelfde blauwe familie, maar omgekeerd:
+     een donker vlak met een lichte accenttekst (8,1:1). */
+  --eyebrow: #14243d;
+  --eyebrow-foreground: #7cc0f5;
+
   --background: #0a0f1c;
   --foreground: #eaecf2;
   --card: #101728;
@@ -165,5 +190,90 @@
   h5,
   h6 {
     @apply font-heading tracking-tight text-balance;
+  }
+}
+
+/* Zacht scrollen bij anchors, maar alleen als de gebruiker beweging toestaat. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/*
+ * Pagina-achtergrond.
+ *
+ * Twee lagen, allebei volledig in CSS. Geen extra netwerkverzoek, geen
+ * rasterafbeelding. Beide lagen hangen aan de paginawrapper (`.page-decor`
+ * in app/layout.tsx), niet aan de viewport. Ze horen bij de bovenkant van de
+ * pagina en scrollen dus gewoon weg, in plaats van de bezoeker te volgen.
+ *
+ * Laag 1 (`::after`, z-index -2): een zachte kleurwas in sterk verdunde
+ * merkkleuren. De verloopstops staan in rem, zodat de wash altijd over de
+ * bovenkant van de pagina valt, ongeacht hoe lang de pagina wordt.
+ *
+ * Laag 2 (`::before`, z-index -1): een paar heel dunne contourlijnen, die
+ * naar links uitvloeien zodat ze nooit achter de bodytekst lopen.
+ *
+ * Beide liggen op een negatieve z-index en vangen geen muisklikken, dus alle
+ * content ligt er gewoon overheen. Secties met een eigen achtergrond (de
+ * halftransparante `bg-secondary/40` en het volle navy CTA-blok) tekenen er
+ * netjes bovenop.
+ */
+@layer base {
+  .page-decor::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image:
+      radial-gradient(
+        55rem 38rem at 88% 0,
+        color-mix(in oklch, var(--brand-accent) 9%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        45rem 32rem at 4% 0,
+        color-mix(in oklch, var(--brand-secondary) 6%, transparent),
+        transparent 65%
+      ),
+      linear-gradient(180deg, var(--page-top) 0, var(--background) 60rem);
+    background-repeat: no-repeat;
+  }
+
+  /* De contourlijnen zijn decoratief en verschijnen pas vanaf grote schermen.
+     Op mobiel loopt de tekstkolom schermbreed, waardoor de lijnen achter de
+     bodytekst zouden vallen. Leesbaarheid gaat voor. */
+  @media (min-width: 64rem) {
+    .page-decor::before {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      height: 44rem;
+      z-index: -1;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='xMidYMin slice'%3E%3Cg fill='none' stroke='%230078d4' stroke-opacity='0.12' stroke-width='1'%3E%3Cpath d='M-120 430C240 300 520 470 820 360 1120 250 1300 215 1580 305'/%3E%3Cpath d='M-120 482C260 352 540 522 840 412 1140 302 1320 267 1600 357'/%3E%3Cpath d='M-120 534C280 404 560 574 860 464 1160 354 1340 319 1620 409'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: cover;
+
+      /* De lijnen vloeien naar links uit, zodat ze ook op groot scherm nooit
+         achter de bodytekst lopen. Ze blijven alleen zichtbaar in de open
+         ruimte rechts, naast en achter het portret. */
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgb(0 0 0 / 25%) 32%,
+        #000 58%
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgb(0 0 0 / 25%) 32%,
+        #000 58%
+      );
+    }
   }
 }

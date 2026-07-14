@@ -14,14 +14,15 @@ Eerst een stevige fundering, daarna content en pagina's.
 - [x] Theme Provider
 - [x] Button- en Card-component (shadcn/ui)
 - [x] Prettier geconfigureerd
-- [ ] Design tokens in `styles/globals.css` afstemmen op de merkkleuren
-- [ ] Globale layout wiren met fonts, ThemeProvider en metadata
-- [ ] Section-component
-- [ ] Header-component
-- [ ] Footer-component
-- [ ] ESLint aanscherpen (Prettier-integratie, import-volgorde)
-- [ ] Husky en lint-staged voor pre-commit checks
-- [ ] Branding-assets toevoegen (logo, favicon, portret)
+- [x] Design tokens in `styles/globals.css` afstemmen op de merkkleuren
+- [x] Globale layout wiren met fonts, ThemeProvider en metadata
+- [x] Section-component
+- [x] Header-component met logo
+- [x] Footer-component met logo
+- [x] ESLint aanscherpen (Prettier-integratie)
+- [x] Husky en lint-staged voor pre-commit checks
+- [x] Branding-assets voorbereiden: logo en portret hernoemd, centrale config, next/image
+- [ ] Aan te leveren: `logo.svg` of `logo.png`, `app/favicon.ico`, `app/icon.svg`, `app/apple-icon.png`
 
 ## Milestone 2: Homepage secties
 

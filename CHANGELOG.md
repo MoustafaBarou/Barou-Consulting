@@ -17,3 +17,12 @@ en het project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 - Container-component, Theme Provider en de UI-primitieven Button en Card.
 - Prettier met de Tailwind-plugin.
 - Projectdocumentatie: README, TODO, CHANGELOG, CLAUDE en LICENSE.
+- Centrale asset-config (`lib/assets.ts`) als enige bron voor logo en portret.
+- Herbruikbare `Logo`- en `Portrait`-componenten op basis van next/image.
+- Globale Header en Footer met het logo.
+- Open Graph- en Twitter-metadata en Organization structured data met het logo.
+- Documentatie over branding-assets in `docs/brand/assets.md`.
+
+### Gewijzigd
+
+- Assets hernoemd naar een vaste conventie: `logo.jfif` en `portrait.jpg`.

@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# lokale audit-output (gegenereerd, niet versiebeheren)
+audit_output.txt
+
 # editor en tooling
 .claude/settings.local.json
 .idea
