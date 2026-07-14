@@ -78,6 +78,12 @@ export type Certification = {
   category: "microsoft" | "cisco";
   /** Maand van behalen. Alleen ingevuld voor de Microsoft-certificeringen. */
   earned?: string;
+  /**
+   * Officiële verificatiepagina op Microsoft Learn. Alleen de
+   * Microsoft-certificeringen zijn online te verifiëren. De Cisco-certificaten
+   * hebben geen verificatielink en blijven daarom zonder hyperlink.
+   */
+  verifyUrl?: string;
 };
 
 /**
@@ -92,6 +98,8 @@ export const certifications: Certification[] = [
     issuer: "Microsoft",
     category: "microsoft",
     earned: "juni 2026",
+    verifyUrl:
+      "https://learn.microsoft.com/en-gb/users/moustafabarou-8435/credentials/3703068d8d542395",
   },
   {
     name: "Microsoft 365 Certified: Endpoint Administrator Associate",
@@ -99,6 +107,8 @@ export const certifications: Certification[] = [
     issuer: "Microsoft",
     category: "microsoft",
     earned: "april 2026",
+    verifyUrl:
+      "https://learn.microsoft.com/en-gb/users/moustafabarou-8435/credentials/e27d39c37abe035b",
   },
   {
     name: "Cybersecurity Essentials",
