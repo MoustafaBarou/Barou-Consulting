@@ -17,9 +17,9 @@ import { Card, CardContent } from "@/components/ui/card";
 const reasons = [
   {
     icon: BadgeCheck,
-    title: "Microsoft-gecertificeerd consultant",
+    title: "Gecertificeerd door Microsoft",
     description:
-      "Gecertificeerd op het niveau van Microsoft 365-beheer en de moderne werkplek: Administrator Expert en Endpoint Administrator Associate. Aantoonbare kennis, online te verifiëren bij Microsoft.",
+      "Gecertificeerd voor het beheer van Microsoft 365 en de moderne werkplek: Administrator Expert en Endpoint Administrator Associate. Aantoonbare kennis, online te verifiëren bij Microsoft.",
   },
   {
     icon: Zap,
@@ -31,7 +31,7 @@ const reasons = [
     icon: Building2,
     title: "Ervaring bij uiteenlopende organisaties",
     description:
-      "Brede ervaring opgedaan in verschillende rollen en omgevingen, van MSP's tot interne IT-teams. Microsoft 365, Intune, Entra ID, migraties en security.",
+      "Brede ervaring opgedaan in verschillende rollen en omgevingen, van MSP's tot interne beheerteams. Microsoft 365, Intune, Entra ID, migraties en security.",
   },
 ];
 

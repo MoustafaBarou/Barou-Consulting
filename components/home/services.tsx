@@ -31,7 +31,7 @@ const services = [
   },
   {
     icon: MailCheck,
-    title: "E-mailbeveiliging",
+    title: "Beveiliging van uw mailverkeer",
     description:
       "Bescherming tegen phishing en misbruik van uw afzendernaam. Met SPF, DKIM en DMARC controleren ontvangers of een mail echt van u komt.",
   },

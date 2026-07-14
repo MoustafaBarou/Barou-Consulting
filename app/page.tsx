@@ -1,3 +1,4 @@
+import { Baseline } from "@/components/home/baseline";
 import { Certifications } from "@/components/home/certifications";
 import { Cta } from "@/components/home/cta";
 import { Hero } from "@/components/home/hero";
@@ -20,6 +21,7 @@ export default function Page() {
       <Problems />
       <Services />
       <Practice />
+      <Baseline />
       <Process />
       <Certifications />
       <Cta />

@@ -75,7 +75,7 @@ function Certifications() {
         <SectionHeading
           eyebrow="Certificeringen"
           title="Aantoonbaar gecertificeerd"
-          lead="De Microsoft-certificeringen zijn online te verifiëren bij Microsoft. Ze bevestigen de kennis waarmee ik uw omgeving inricht en beheer."
+          lead="De certificeringen van Microsoft zijn online te verifiëren. Ze bevestigen de kennis waarmee ik uw omgeving inricht en beheer."
         />
 
         <div className="grid gap-4 sm:grid-cols-2">

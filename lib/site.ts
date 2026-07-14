@@ -12,7 +12,7 @@ export const siteConfig = {
   shortName: "Barou",
   url: "https://barouconsulting.nl",
   description:
-    "Gespecialiseerde Microsoft 365 consultancy. Direct contact, korte lijnen en specialistische kennis voor een veilige en overzichtelijke Microsoft 365-omgeving.",
+    "Gespecialiseerde Microsoft 365 consultancy. Direct contact, korte lijnen en specialistische kennis voor een veilige en overzichtelijke werkplek in Microsoft 365.",
   locale: "nl-NL",
   tagline: "Microsoft 365 Consultancy",
 
@@ -68,6 +68,37 @@ export const mainNav: { title: string; href: string }[] = [
   { title: "Certificeringen", href: "#certificeringen" },
   { title: "Contact", href: "#contact" },
 ];
+
+/**
+ * De Conditional Access baseline die Moustafa openbaar onderhoudt op GitHub.
+ *
+ * Eerlijk formuleren: dit is geen eigen uitvinding. Het is zijn praktische
+ * bewerking en onderhoud van het Zero Trust-framework van Microsoft. Die
+ * herkomst hoort er altijd bij te staan. Claim nergens dat het volledig
+ * eigen werk is.
+ */
+export const conditionalAccessBaseline = {
+  name: "Conditional Access Baseline",
+  repoUrl: "https://github.com/MoustafaBarou/ConditionalAccessBaseline",
+  personas: ["Global", "Admins", "Internals", "Guests", "Agents"],
+  highlights: [
+    {
+      title: "Een model per gebruikersgroep",
+      description:
+        "Beleid per type gebruiker: Global, Admins, Internals, Guests en Agents. Zo blijft het overzichtelijk in plaats van een berg losse regels.",
+    },
+    {
+      title: "Ruim 40 beleidsregels",
+      description:
+        "Van MFA en toegang op basis van risico tot het blokkeren van legacy authenticatie, controle op de staat van het apparaat en sterke MFA die bestand is tegen phishing.",
+    },
+    {
+      title: "Actief onderhouden",
+      description:
+        "Loopt mee met de nieuwste ontwikkelingen, waaronder Continuous Access Evaluation en Conditional Access voor agents met AI.",
+    },
+  ],
+} as const;
 
 /** Een behaalde certificering met verwijzing naar de badge-afbeelding. */
 export type Certification = {

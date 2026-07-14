@@ -32,7 +32,7 @@ const problems = [
     icon: MailWarning,
     title: "Phishing en toegang houden u bezig",
     description:
-      "U maakt zich zorgen over nep-mails uit naam van uw organisatie, en over de vraag wie eigenlijk bij welke gegevens kan.",
+      "U maakt zich zorgen over valse berichten uit naam van uw organisatie, en over de vraag wie eigenlijk bij welke gegevens kan.",
   },
   {
     icon: ScrollText,

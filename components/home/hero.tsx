@@ -23,10 +23,10 @@ function Hero() {
             Microsoft 365 &amp; Modern Workplace consultant
           </h1>
           <p className="text-muted-foreground mt-6 text-lg leading-relaxed">
-            Zelfstandig Microsoft 365- en Modern Workplace-consultant. Ik richt
-            digitale werkplekken veilig, modern en beheersbaar in, van Intune en
-            Entra ID tot Conditional Access en security. Direct inzetbaar, met
-            korte lijnen en één vast aanspreekpunt.
+            Zelfstandig consultant voor Microsoft 365 en de moderne werkplek. Ik
+            richt digitale werkplekken veilig, modern en beheersbaar in, van
+            Intune en Entra ID tot Conditional Access en security. Direct
+            inzetbaar, met korte lijnen en één vast aanspreekpunt.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

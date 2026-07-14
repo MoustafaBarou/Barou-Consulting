@@ -15,7 +15,7 @@ const steps = [
   {
     title: "Analyse",
     description:
-      "Ik breng uw huidige Microsoft 365-omgeving in kaart en benoem de belangrijkste risico's en kansen.",
+      "Ik breng in kaart hoe uw Microsoft 365 er nu voor staat en benoem de belangrijkste risico's en kansen.",
   },
   {
     title: "Plan",
@@ -30,7 +30,7 @@ const steps = [
   {
     title: "Beheer en optimalisatie",
     description:
-      "Doorlopend meekijken en bijsturen, als u dat wilt. Uw omgeving blijft veilig en up-to-date. Deze stap is optioneel.",
+      "Doorlopend meekijken en bijsturen, als u dat wilt. Uw omgeving blijft veilig en actueel. Deze stap is optioneel.",
   },
 ];
 

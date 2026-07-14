@@ -1,9 +1,17 @@
-import { KeyRound, Laptop, MailCheck, ShieldCheck } from "lucide-react";
+import {
+  KeyRound,
+  Laptop,
+  MailCheck,
+  ShieldCheck,
+  type LucideIcon,
+} from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Card, CardContent } from "@/components/ui/card";
+import { GitHubIcon } from "@/components/shared/icons";
 import { SectionHeading } from "@/components/home/section-heading";
+import { conditionalAccessBaseline } from "@/lib/site";
 
 /**
  * Aanpak in de praktijk. Bewust geen "cases": dit zijn concrete
@@ -11,7 +19,16 @@ import { SectionHeading } from "@/components/home/section-heading";
  * gedaan, niet betaalde klantopdrachten van Barou Consulting. Geen
  * klantnamen, geen verzonnen cijfers. Wel concreet en verifieerbaar werk.
  */
-const examples = [
+type Example = {
+  icon: LucideIcon;
+  label: string;
+  title: string;
+  description: string;
+  /** Alleen de Conditional Access-kaart verwijst naar de openbare baseline. */
+  link?: { label: string; href: string };
+};
+
+const examples: Example[] = [
   {
     icon: Laptop,
     label: "Apparaatbeheer",
@@ -21,17 +38,21 @@ const examples = [
   },
   {
     icon: KeyRound,
-    label: "Toegang en identiteit",
-    title: "Toegang ingericht volgens Zero Trust",
+    label: "Conditional Access",
+    title: "Conditional Access ontworpen en ingericht",
     description:
-      "Conditional Access en MFA organisatiebreed opgezet volgens least privilege. Beheerderstoegang geregeld met Privileged Identity Management, zodat rechten alleen gelden wanneer dat nodig is.",
+      "Toegangsbeleid volgens Zero Trust, opgezet per gebruikersgroep en met regels op basis van risico. MFA, controle op de staat van het apparaat en het blokkeren van legacy authenticatie. Beheerderstoegang loopt via Privileged Identity Management, zodat rechten alleen gelden wanneer dat nodig is.",
+    link: {
+      label: "Bekijk mijn baseline op GitHub",
+      href: conditionalAccessBaseline.repoUrl,
+    },
   },
   {
     icon: MailCheck,
-    label: "Migratie en e-mail",
+    label: "Migratie en mailverkeer",
     title: "Migraties uitgevoerd en de mailstroom gehard",
     description:
-      "Tenant-to-tenant en Exchange Online migraties gedaan. De mailflow opnieuw ingericht en beveiligd met SPF, DKIM en DMARC tegen phishing en misbruik van de afzendernaam.",
+      "Migraties tussen tenants en naar Exchange Online uitgevoerd. De mailstroom opnieuw ingericht en beveiligd met SPF, DKIM en DMARC tegen phishing en misbruik van de afzendernaam.",
   },
   {
     icon: ShieldCheck,
@@ -52,9 +73,9 @@ function Practice() {
           lead="Voorbeelden van werk dat ik als Modern Workplace consultant heb uitgevoerd. Geen klantnamen, wel concreet. Zo ziet de inhoud van een opdracht eruit."
         />
         <div className="grid gap-4 sm:grid-cols-2">
-          {examples.map(({ icon: Icon, label, title, description }) => (
+          {examples.map(({ icon: Icon, label, title, description, link }) => (
             <Card key={title}>
-              <CardContent className="flex flex-col gap-3">
+              <CardContent className="flex h-full flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <span className="bg-primary text-primary-foreground flex size-10 items-center justify-center rounded-lg">
                     <Icon className="size-5" aria-hidden />
@@ -69,6 +90,18 @@ function Practice() {
                 <p className="text-muted-foreground leading-relaxed">
                   {description}
                 </p>
+                {link ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${link.label}, opent in een nieuw tabblad`}
+                    className="text-brand-accent focus-visible:ring-ring mt-auto inline-flex items-center gap-2 self-start rounded-sm pt-1 text-sm font-medium underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                  >
+                    <GitHubIcon className="size-4" />
+                    {link.label}
+                  </a>
+                ) : null}
               </CardContent>
             </Card>
           ))}
