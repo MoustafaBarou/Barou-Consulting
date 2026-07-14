@@ -27,6 +27,7 @@
   --color-success: var(--success);
   --color-eyebrow: var(--eyebrow);
   --color-eyebrow-foreground: var(--eyebrow-foreground);
+  --color-whatsapp: var(--whatsapp);
   --color-status-open: var(--status-open);
   --color-status-limited: var(--status-limited);
   --color-status-closed: var(--status-closed);
@@ -92,6 +93,11 @@
   --eyebrow: #e9f1fa;
   --eyebrow-foreground: var(--brand-accent-strong);
 
+  /* Het donkere groen uit de huisstijl van WhatsApp. Bewust niet het felle
+     #25D366: dat haalt op deze achtergrond maar 1,9:1 en zakt daarmee onder
+     de 3:1 die een betekenisvol icoon nodig heeft. Dit groen haalt 4,0:1. */
+  --whatsapp: #128c7e;
+
   /* Statuslampje voor de beschikbaarheid. Amber staat voor beschikbaar maar
      niet volledig vrij, en is daarmee eerlijker dan groen. */
   --status-open: #107c41;
@@ -144,6 +150,8 @@
      een donker vlak met een lichte accenttekst (8,1:1). */
   --eyebrow: #14243d;
   --eyebrow-foreground: #7cc0f5;
+
+  --whatsapp: #25d366;
 
   --status-open: #4cc38a;
   --status-limited: #f0a13a;

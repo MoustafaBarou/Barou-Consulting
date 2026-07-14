@@ -74,6 +74,19 @@ export const primaryCta = {
   href: `mailto:${siteConfig.contact.email}?subject=Kennismaking%20Barou%20Consulting`,
 } as const;
 
+/**
+ * WhatsApp-actie voor de header.
+ *
+ * Staat los van `primaryCta`, want die blijft de hero en het contactblok
+ * bedienen. Alleen de header gebruikt WhatsApp. Het nummer staat in het
+ * wa.me-formaat: landcode 31, zonder plus, spaties of de nul vooraan.
+ */
+export const whatsappCta = {
+  label: "WhatsApp",
+  ariaLabel: "Neem contact op via WhatsApp",
+  href: "https://wa.me/31644513140?text=Hallo%20Moustafa%2C%20ik%20heb%20een%20vraag",
+} as const;
+
 /** Secundaire, laagdrempelige call-to-action naar de dienstensectie. */
 export const secondaryCta = {
   label: "Bekijk de diensten",
