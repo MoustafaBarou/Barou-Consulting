@@ -38,6 +38,25 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/moustafa-barou-44a88125b",
   },
 
+  /**
+   * Beschikbaarheid voor nieuwe opdrachten.
+   *
+   * Dit verandert regelmatig, dus het staat hier op één plek. Pas `status`
+   * en de labels aan en de header volgt vanzelf.
+   *
+   * De status stuurt de kleur van het lampje aan:
+   * `open`    groen, volledig vrij
+   * `limited` amber, wel beschikbaar maar niet volledig vrij
+   * `closed`  grijs, geen ruimte
+   */
+  availability: {
+    status: "limited" as "open" | "limited" | "closed",
+    /** Korte variant, zichtbaar in de header op grote schermen. */
+    label: "Beperkt beschikbaar",
+    /** Volledige variant, voor schermlezers en de tooltip. */
+    fullLabel: "Beperkt beschikbaar, in overleg",
+  },
+
   /** Bedrijfsgegevens voor de footer. */
   business: {
     kvk: "90895355",

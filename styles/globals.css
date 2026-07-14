@@ -27,6 +27,9 @@
   --color-success: var(--success);
   --color-eyebrow: var(--eyebrow);
   --color-eyebrow-foreground: var(--eyebrow-foreground);
+  --color-status-open: var(--status-open);
+  --color-status-limited: var(--status-limited);
+  --color-status-closed: var(--status-closed);
 
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -89,6 +92,12 @@
   --eyebrow: #e9f1fa;
   --eyebrow-foreground: var(--brand-accent-strong);
 
+  /* Statuslampje voor de beschikbaarheid. Amber staat voor beschikbaar maar
+     niet volledig vrij, en is daarmee eerlijker dan groen. */
+  --status-open: #107c41;
+  --status-limited: #d97706;
+  --status-closed: #6b7280;
+
   --radius: 0.625rem;
 
   /* Semantische tokens (light) */
@@ -135,6 +144,10 @@
      een donker vlak met een lichte accenttekst (8,1:1). */
   --eyebrow: #14243d;
   --eyebrow-foreground: #7cc0f5;
+
+  --status-open: #4cc38a;
+  --status-limited: #f0a13a;
+  --status-closed: #9aa6bd;
 
   --background: #0a0f1c;
   --foreground: #eaecf2;
@@ -197,6 +210,29 @@
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/*
+ * De halo om het statuslampje. Zonder animatie blijft het een stilstaande,
+ * zachte gloed, dus het lampje ziet er ook zonder beweging compleet uit.
+ * De pulse loopt alleen wanneer de gebruiker beweging toestaat.
+ */
+@keyframes status-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .status-pulse {
+    animation: status-pulse 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
 }
 
