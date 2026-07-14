@@ -1,0 +1,323 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design tokens van Barou Consulting.
+ *
+ * De ruwe merkkleuren staan als `--brand-*` tokens vast. Daaronder worden
+ * ze gekoppeld aan de semantische tokens die de componenten gebruiken.
+ * Het accent is gereserveerd voor CTA, links, focus en actieve states.
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-success: var(--success);
+  --color-eyebrow: var(--eyebrow);
+  --color-eyebrow-foreground: var(--eyebrow-foreground);
+  --color-whatsapp: var(--whatsapp);
+  --color-status-open: var(--status-open);
+  --color-status-limited: var(--status-limited);
+  --color-status-closed: var(--status-closed);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Ruwe merkkleuren */
+  --brand-primary: #01153f;
+  --brand-secondary: #193567;
+  --brand-accent: #0078d4;
+  --brand-accent-strong: #0063b1;
+  --paper: #fbfaf8;
+  --ink: #14181f;
+
+  /* Gedempt groen, uitsluitend als bevestigingssignaal (bijvoorbeeld een vinkje).
+     Nooit als decoratie en nooit als tweede accentkleur. */
+  --success: #107c41;
+
+  /* Bovenkant van de pagina-achtergrond. Loopt zacht af naar --background. */
+  --page-top: #ffffff;
+
+  /* Sectielabel (de pill boven een sectiekop). Beide uit de accent-familie.
+     De tekst gebruikt het diepere accent, want het heldere #0078D4 haalt op
+     dit lichte vlak maar 3,95:1 en dat is te weinig voor kleine tekst.
+     Deze combinatie haalt 5,38:1 en voldoet daarmee aan WCAG AA. */
+  --eyebrow: #e9f1fa;
+  --eyebrow-foreground: var(--brand-accent-strong);
+
+  /* Het donkere groen uit de huisstijl van WhatsApp. Bewust niet het felle
+     #25D366: dat haalt op deze achtergrond maar 1,9:1 en zakt daarmee onder
+     de 3:1 die een betekenisvol icoon nodig heeft. Dit groen haalt 4,0:1. */
+  --whatsapp: #128c7e;
+
+  /* Statuslampje voor de beschikbaarheid. Amber staat voor beschikbaar maar
+     niet volledig vrij, en is daarmee eerlijker dan groen. */
+  --status-open: #107c41;
+  --status-limited: #d97706;
+  --status-closed: #6b7280;
+
+  --radius: 0.625rem;
+
+  /* Semantische tokens (light) */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+  --primary: var(--brand-primary);
+  --primary-foreground: var(--paper);
+  --secondary: #eef1f6;
+  --secondary-foreground: var(--brand-primary);
+  --muted: #eef1f6;
+  --muted-foreground: #55617a;
+  --accent: #e9f1fa;
+  --accent-foreground: var(--brand-primary);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e4e7ee;
+  --input: #e4e7ee;
+  --ring: var(--brand-accent);
+
+  --chart-1: var(--brand-accent);
+  --chart-2: var(--brand-secondary);
+  --chart-3: var(--brand-primary);
+  --chart-4: #4a90d9;
+  --chart-5: #93c0ea;
+
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--brand-primary);
+  --sidebar-primary-foreground: var(--paper);
+  --sidebar-accent: #e9f1fa;
+  --sidebar-accent-foreground: var(--brand-primary);
+  --sidebar-border: #e4e7ee;
+  --sidebar-ring: var(--brand-accent);
+}
+
+.dark {
+  --success: #4cc38a;
+  --page-top: #0d1424;
+
+  /* In dark blijft de pill in dezelfde blauwe familie, maar omgekeerd:
+     een donker vlak met een lichte accenttekst (8,1:1). */
+  --eyebrow: #14243d;
+  --eyebrow-foreground: #7cc0f5;
+
+  --whatsapp: #25d366;
+
+  --status-open: #4cc38a;
+  --status-limited: #f0a13a;
+  --status-closed: #9aa6bd;
+
+  --background: #0a0f1c;
+  --foreground: #eaecf2;
+  --card: #101728;
+  --card-foreground: #eaecf2;
+  --popover: #101728;
+  --popover-foreground: #eaecf2;
+  --primary: #2f8ae0;
+  --primary-foreground: #ffffff;
+  --secondary: #1b2740;
+  --secondary-foreground: #eaecf2;
+  --muted: #1b2740;
+  --muted-foreground: #9aa6bd;
+  --accent: #14243d;
+  --accent-foreground: #eaecf2;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: #3a93e0;
+
+  --chart-1: #3a93e0;
+  --chart-2: #4a90d9;
+  --chart-3: #93c0ea;
+  --chart-4: #6aa9e6;
+  --chart-5: #b7d5f1;
+
+  --sidebar: #101728;
+  --sidebar-foreground: #eaecf2;
+  --sidebar-primary: #2f8ae0;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #14243d;
+  --sidebar-accent-foreground: #eaecf2;
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: #3a93e0;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  html {
+    @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading tracking-tight text-balance;
+  }
+}
+
+/* Zacht scrollen bij anchors, maar alleen als de gebruiker beweging toestaat. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/*
+ * De halo om het statuslampje. Zonder animatie blijft het een stilstaande,
+ * zachte gloed, dus het lampje ziet er ook zonder beweging compleet uit.
+ * De pulse loopt alleen wanneer de gebruiker beweging toestaat.
+ */
+@keyframes status-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .status-pulse {
+    animation: status-pulse 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+}
+
+/*
+ * Pagina-achtergrond.
+ *
+ * Twee lagen, allebei volledig in CSS. Geen extra netwerkverzoek, geen
+ * rasterafbeelding. Beide lagen hangen aan de paginawrapper (`.page-decor`
+ * in app/layout.tsx), niet aan de viewport. Ze horen bij de bovenkant van de
+ * pagina en scrollen dus gewoon weg, in plaats van de bezoeker te volgen.
+ *
+ * Laag 1 (`::after`, z-index -2): een zachte kleurwas in sterk verdunde
+ * merkkleuren. De verloopstops staan in rem, zodat de wash altijd over de
+ * bovenkant van de pagina valt, ongeacht hoe lang de pagina wordt.
+ *
+ * Laag 2 (`::before`, z-index -1): een paar heel dunne contourlijnen, die
+ * naar links uitvloeien zodat ze nooit achter de bodytekst lopen.
+ *
+ * Beide liggen op een negatieve z-index en vangen geen muisklikken, dus alle
+ * content ligt er gewoon overheen. Secties met een eigen achtergrond (de
+ * halftransparante `bg-secondary/40` en het volle navy CTA-blok) tekenen er
+ * netjes bovenop.
+ */
+@layer base {
+  .page-decor::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image:
+      radial-gradient(
+        55rem 38rem at 88% 0,
+        color-mix(in oklch, var(--brand-accent) 9%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        45rem 32rem at 4% 0,
+        color-mix(in oklch, var(--brand-secondary) 6%, transparent),
+        transparent 65%
+      ),
+      linear-gradient(180deg, var(--page-top) 0, var(--background) 60rem);
+    background-repeat: no-repeat;
+  }
+
+  /* De contourlijnen zijn decoratief en verschijnen pas vanaf grote schermen.
+     Op mobiel loopt de tekstkolom schermbreed, waardoor de lijnen achter de
+     bodytekst zouden vallen. Leesbaarheid gaat voor. */
+  @media (min-width: 64rem) {
+    .page-decor::before {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      height: 44rem;
+      z-index: -1;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='xMidYMin slice'%3E%3Cg fill='none' stroke='%230078d4' stroke-opacity='0.12' stroke-width='1'%3E%3Cpath d='M-120 430C240 300 520 470 820 360 1120 250 1300 215 1580 305'/%3E%3Cpath d='M-120 482C260 352 540 522 840 412 1140 302 1320 267 1600 357'/%3E%3Cpath d='M-120 534C280 404 560 574 860 464 1160 354 1340 319 1620 409'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: cover;
+
+      /* De lijnen vloeien naar links uit, zodat ze ook op groot scherm nooit
+         achter de bodytekst lopen. Ze blijven alleen zichtbaar in de open
+         ruimte rechts, naast en achter het portret. */
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgb(0 0 0 / 25%) 32%,
+        #000 58%
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgb(0 0 0 / 25%) 32%,
+        #000 58%
+      );
+    }
+  }
+}
