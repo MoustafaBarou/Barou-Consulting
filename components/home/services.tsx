@@ -9,6 +9,7 @@ import {
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/home/section-heading";
 
@@ -59,28 +60,32 @@ function Services() {
   return (
     <Section id="diensten" className="bg-secondary/40 scroll-mt-24">
       <Container className="space-y-10">
-        <SectionHeading
-          eyebrow="Diensten"
-          title="Waar ik u bij help"
-          lead="Van eerste inrichting tot doorlopend beheer. Steeds met hetzelfde doel: een omgeving die veilig, beheersbaar en overzichtelijk is."
-        />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Diensten"
+            title="Waar ik u bij help"
+            lead="Van eerste inrichting tot doorlopend beheer. Steeds met hetzelfde doel: een omgeving die veilig, beheersbaar en overzichtelijk is."
+          />
+        </Reveal>
+        <RevealGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map(({ icon: Icon, title, description }) => (
-            <Card key={title}>
-              <CardContent className="flex flex-col gap-3">
-                <span className="bg-primary text-primary-foreground flex size-10 items-center justify-center rounded-lg">
-                  <Icon className="size-5" aria-hidden />
-                </span>
-                <h3 className="font-heading text-base leading-snug font-medium">
-                  {title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {description}
-                </p>
-              </CardContent>
-            </Card>
+            <RevealItem key={title} className="h-full">
+              <Card className="h-full">
+                <CardContent className="flex flex-col gap-3">
+                  <span className="bg-primary text-primary-foreground flex size-10 items-center justify-center rounded-lg">
+                    <Icon className="size-5" aria-hidden />
+                  </span>
+                  <h3 className="font-heading text-base leading-snug font-medium">
+                    {title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {description}
+                  </p>
+                </CardContent>
+              </Card>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </Container>
     </Section>
   );

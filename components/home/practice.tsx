@@ -8,6 +8,7 @@ import {
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
 import { Card, CardContent } from "@/components/ui/card";
 import { GitHubIcon } from "@/components/shared/icons";
 import { SectionHeading } from "@/components/home/section-heading";
@@ -67,45 +68,49 @@ function Practice() {
   return (
     <Section id="aanpak" className="scroll-mt-24">
       <Container className="space-y-10">
-        <SectionHeading
-          eyebrow="Uit de praktijk"
-          title="Dit soort werk doe ik"
-          lead="Voorbeelden van werk dat ik als Modern Workplace consultant heb uitgevoerd. Geen klantnamen, wel concreet. Zo ziet de inhoud van een opdracht eruit."
-        />
-        <div className="grid gap-4 sm:grid-cols-2">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Uit de praktijk"
+            title="Dit soort werk doe ik"
+            lead="Voorbeelden van werk dat ik als Modern Workplace consultant heb uitgevoerd. Geen klantnamen, wel concreet. Zo ziet de inhoud van een opdracht eruit."
+          />
+        </Reveal>
+        <RevealGroup className="grid gap-4 sm:grid-cols-2">
           {examples.map(({ icon: Icon, label, title, description, link }) => (
-            <Card key={title}>
-              <CardContent className="flex h-full flex-col gap-3">
-                <div className="flex items-center gap-3">
-                  <span className="bg-primary text-primary-foreground flex size-10 items-center justify-center rounded-lg">
-                    <Icon className="size-5" aria-hidden />
-                  </span>
-                  <span className="text-muted-foreground font-mono text-xs tracking-wide uppercase">
-                    {label}
-                  </span>
-                </div>
-                <h3 className="font-heading text-base leading-snug font-medium">
-                  {title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {description}
-                </p>
-                {link ? (
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${link.label}, opent in een nieuw tabblad`}
-                    className="text-brand-accent focus-visible:ring-ring mt-auto inline-flex items-center gap-2 self-start rounded-sm pt-1 text-sm font-medium underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-                  >
-                    <GitHubIcon className="size-4" />
-                    {link.label}
-                  </a>
-                ) : null}
-              </CardContent>
-            </Card>
+            <RevealItem key={title} className="h-full">
+              <Card className="h-full">
+                <CardContent className="flex h-full flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <span className="bg-primary text-primary-foreground flex size-10 items-center justify-center rounded-lg">
+                      <Icon className="size-5" aria-hidden />
+                    </span>
+                    <span className="text-muted-foreground font-mono text-xs tracking-wide uppercase">
+                      {label}
+                    </span>
+                  </div>
+                  <h3 className="font-heading text-base leading-snug font-medium">
+                    {title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {description}
+                  </p>
+                  {link ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${link.label}, opent in een nieuw tabblad`}
+                      className="text-brand-accent focus-visible:ring-ring mt-auto inline-flex items-center gap-2 self-start rounded-sm pt-1 text-sm font-medium underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                    >
+                      <GitHubIcon className="size-4" />
+                      {link.label}
+                    </a>
+                  ) : null}
+                </CardContent>
+              </Card>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </Container>
     </Section>
   );

@@ -8,6 +8,7 @@ import {
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/home/section-heading";
 
@@ -52,28 +53,32 @@ function Problems() {
   return (
     <Section>
       <Container className="space-y-10">
-        <SectionHeading
-          eyebrow="Herkenbaar"
-          title="Uitdagingen die we vaak tegenkomen"
-          lead="Microsoft 365 groeit mee met de organisatie. Zonder vaste hand wordt het al snel onoverzichtelijk. Deze situaties komen vaak terug."
-        />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Herkenbaar"
+            title="Uitdagingen die we vaak tegenkomen"
+            lead="Microsoft 365 groeit mee met de organisatie. Zonder vaste hand wordt het al snel onoverzichtelijk. Deze situaties komen vaak terug."
+          />
+        </Reveal>
+        <RevealGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {problems.map(({ icon: Icon, title, description }) => (
-            <Card key={title}>
-              <CardContent className="flex flex-col gap-3">
-                <span className="bg-secondary text-primary flex size-10 items-center justify-center rounded-lg">
-                  <Icon className="size-5" aria-hidden />
-                </span>
-                <h3 className="font-heading text-base leading-snug font-medium">
-                  {title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {description}
-                </p>
-              </CardContent>
-            </Card>
+            <RevealItem key={title} className="h-full">
+              <Card className="h-full">
+                <CardContent className="flex flex-col gap-3">
+                  <span className="bg-secondary text-primary flex size-10 items-center justify-center rounded-lg">
+                    <Icon className="size-5" aria-hidden />
+                  </span>
+                  <h3 className="font-heading text-base leading-snug font-medium">
+                    {title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {description}
+                  </p>
+                </CardContent>
+              </Card>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </Container>
     </Section>
   );

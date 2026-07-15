@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/home/section-heading";
 import { certifications, type Certification } from "@/lib/site";
@@ -72,25 +73,32 @@ function Certifications() {
   return (
     <Section id="certificeringen" className="scroll-mt-24">
       <Container className="space-y-10">
-        <SectionHeading
-          eyebrow="Certificeringen"
-          title="Aantoonbaar gecertificeerd"
-          lead="De certificeringen van Microsoft zijn online te verifiëren. Ze bevestigen de kennis waarmee ik uw omgeving inricht en beheer."
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow="Certificeringen"
+            title="Aantoonbaar gecertificeerd"
+            lead="De certificeringen van Microsoft zijn online te verifiëren. Ze bevestigen de kennis waarmee ik uw omgeving inricht en beheer."
+          />
+        </Reveal>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <RevealGroup className="grid gap-4 sm:grid-cols-2">
           {microsoft.map((cert) => (
-            <MicrosoftCertificationCard key={cert.name} cert={cert} />
+            <RevealItem key={cert.name} className="h-full">
+              <MicrosoftCertificationCard cert={cert} />
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
         <div className="space-y-6 border-t pt-8">
-          <h3 className="text-muted-foreground text-sm font-medium">
-            Aanvullende certificaten
-          </h3>
-          <ul className="grid gap-6 sm:grid-cols-4">
+          <Reveal>
+            <h3 className="text-muted-foreground text-sm font-medium">
+              Aanvullende certificaten
+            </h3>
+          </Reveal>
+          <RevealGroup as="ul" className="grid gap-6 sm:grid-cols-4">
             {cisco.map((cert) => (
-              <li
+              <RevealItem
+                as="li"
                 key={cert.name}
                 className="flex flex-col items-center gap-3 text-center"
               >
@@ -105,9 +113,9 @@ function Certifications() {
                 <p className="text-muted-foreground text-sm leading-snug">
                   {cert.name}
                 </p>
-              </li>
+              </RevealItem>
             ))}
-          </ul>
+          </RevealGroup>
         </div>
       </Container>
     </Section>

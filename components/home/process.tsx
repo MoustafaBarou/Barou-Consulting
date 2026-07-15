@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
 import { SectionHeading } from "@/components/home/section-heading";
 
 /**
@@ -38,14 +39,19 @@ function Process() {
   return (
     <Section id="werkwijze" className="bg-secondary/40 scroll-mt-24">
       <Container className="space-y-10">
-        <SectionHeading
-          eyebrow="Werkwijze"
-          title="Zo werken we samen"
-          lead="Een duidelijke route van kennismaking tot beheer. Geen verrassingen, geen onnodige stappen."
-        />
-        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Werkwijze"
+            title="Zo werken we samen"
+            lead="Een duidelijke route van kennismaking tot beheer. Geen verrassingen, geen onnodige stappen."
+          />
+        </Reveal>
+        <RevealGroup
+          as="ol"
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {steps.map(({ title, description }, index) => (
-            <li key={title} className="flex gap-4">
+            <RevealItem as="li" key={title} className="flex gap-4">
               <span
                 className="font-heading text-muted-foreground text-2xl font-semibold tabular-nums"
                 aria-hidden
@@ -60,9 +66,9 @@ function Process() {
                   {description}
                 </p>
               </div>
-            </li>
+            </RevealItem>
           ))}
-        </ol>
+        </RevealGroup>
       </Container>
     </Section>
   );

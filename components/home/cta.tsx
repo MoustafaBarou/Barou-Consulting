@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { PrimaryCta } from "@/components/shared/cta";
 import { LinkedInIcon } from "@/components/shared/icons";
+import { Reveal } from "@/components/shared/reveal";
 import { siteConfig } from "@/lib/site";
 
 /**
@@ -18,7 +19,7 @@ function Cta() {
   return (
     <Section id="contact" className="scroll-mt-24">
       <Container>
-        <div className="bg-primary text-primary-foreground rounded-2xl px-8 py-12 sm:px-12 sm:py-16">
+        <Reveal className="bg-primary text-primary-foreground rounded-2xl px-8 py-12 sm:px-12 sm:py-16">
           <div className="max-w-2xl space-y-4">
             <h2 className="font-heading text-3xl font-semibold sm:text-4xl">
               Zullen we kennismaken?
@@ -51,7 +52,7 @@ function Cta() {
               </a>
             </div>
           </div>
-        </div>
+        </Reveal>
       </Container>
     </Section>
   );
