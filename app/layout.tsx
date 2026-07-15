@@ -51,6 +51,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nl" className={fontVariables} suppressHydrationWarning>
+      <head>
+        {/* Zonder JavaScript animeert niets. Toon de in-fadende blokken dan
+            direct, zodat de content altijd zichtbaar is. Zie
+            components/shared/reveal.tsx. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
+      </head>
       <body>
         <ThemeProvider
           attribute="class"

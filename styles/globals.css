@@ -222,6 +222,22 @@
 }
 
 /*
+ * Scroll-onthulling (zie components/shared/reveal.tsx).
+ *
+ * Wanneer de gebruiker minder beweging wil, tonen we de in-fadende blokken
+ * direct en stil. Deze regel wint van de inline-startstijl die Framer Motion
+ * neerzet, zodat de content nooit onzichtbaar blijft, ook niet tussen laden
+ * en hydrateren. De noscript-fallback in app/layout.tsx dekt het geval
+ * zonder JavaScript af.
+ */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/*
  * De halo om het statuslampje. Zonder animatie blijft het een stilstaande,
  * zachte gloed, dus het lampje ziet er ook zonder beweging compleet uit.
  * De pulse loopt alleen wanneer de gebruiker beweging toestaat.
