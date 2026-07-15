@@ -28,17 +28,17 @@ const AMOUNT = 0.2; // deel van het element in beeld voordat het start
 const viewport = { once: true, amount: AMOUNT } as const;
 
 function itemVariants(reduce: boolean, delay = 0): Variants {
+  // De delay hoort alleen bij een losse Reveal. Binnen een RevealGroup mag
+  // hij niet gezet worden: staggerChildren injecteert daar zelf een delay per
+  // kaart, en een expliciete delay op het kind zou die stagger overschrijven,
+  // waardoor alle kaarten tegelijk verschijnen in plaats van na elkaar.
+  const transition = reduce
+    ? { duration: 0 }
+    : { duration: DURATION, ease: EASE, ...(delay ? { delay } : {}) };
+
   return {
     hidden: { opacity: reduce ? 1 : 0, y: reduce ? 0 : OFFSET },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: reduce ? 0 : DURATION,
-        ease: EASE,
-        delay: reduce ? 0 : delay,
-      },
-    },
+    visible: { opacity: 1, y: 0, transition },
   };
 }
 
